@@ -1,0 +1,44 @@
+<div class="container">
+
+  <h2>Admin - User Management</h2>
+
+  <table border="1" cellpadding="10">
+
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Account No</th>
+        <th>Balance</th>
+        <th>Status</th>
+        <th>Locked</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let user of users">
+
+        <td>{{user.id}}</td>
+        <td>{{user.fullName}}</td>
+        <td>{{user.userEmail}}</td>
+        <td>{{user.phone}}</td>
+        <td>{{user.account?.accountNumber}}</td>
+        <td>{{user.account?.balance}}</td>
+        <td>{{user.account?.accountStatus}}</td>
+        <td>{{user.accountLocked}}</td>
+
+        <td>
+          <button (click)="activate(user.id)">Activate</button>
+          <button (click)="deactivate(user.id)">Deactivate</button>
+          <button (click)="deleteUser(user.id)">Delete</button>
+        </td>
+
+      </tr>
+    </tbody>
+
+  </table>
+
+</div>

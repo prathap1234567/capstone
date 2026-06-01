@@ -1,0 +1,134 @@
+<div class="history-page">
+
+  <div class="container py-5">
+
+    <div class="row justify-content-center">
+
+      <div class="col-12">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+
+          <div>
+            <h2 class="text-white fw-bold mb-1">
+              Transaction History
+            </h2>
+
+            <p class="text-light mb-0">
+              View all your transaction records
+            </p>
+          </div>
+
+          <span class="badge bg-info rounded-pill px-3 py-2">
+            History
+          </span>
+
+        </div>
+
+        <div class="card history-card shadow-lg border-0 rounded-4">
+
+          <div class="card-body p-4">
+
+            <div class="alert account-box mb-4">
+
+              <span class="text-secondary">
+                Account Number
+              </span>
+
+              <h5 class="mb-0 text-white">
+                {{accountNumber}}
+              </h5>
+
+            </div>
+
+            <div class="table-responsive">
+
+              <table class="table table-dark table-hover align-middle">
+
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                    <th>Remarks</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+
+                  <tr *ngFor="let tx of transactions">
+
+                    <td>{{tx.transactionId}}</td>
+
+                    <td>{{tx.fromAccount}}</td>
+
+                    <td>{{tx.toAccount}}</td>
+
+                    <td class="fw-bold text-success">
+                      ₹{{tx.amount}}
+                    </td>
+
+                    <td>
+
+                      <span
+                        class="badge"
+                        [ngClass]="{
+                          'bg-success': tx.status==='SUCCESS',
+                          'bg-danger': tx.status==='FAILED',
+                          'bg-warning text-dark': tx.status==='PENDING'
+                        }">
+
+                        {{tx.status}}
+
+                      </span>
+
+                    </td>
+
+                    <td>{{tx.createdAt}}</td>
+
+                    <td>{{tx.remarks}}</td>
+
+                  </tr>
+
+                  <tr *ngIf="transactions.length === 0">
+
+                    <td colspan="7"
+                        class="text-center text-secondary py-4">
+
+                      No Transactions Found
+
+                    </td>
+
+                  </tr>
+
+                </tbody>
+
+              </table>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="text-center mt-4">
+
+          <button
+            class="btn btn-outline-light rounded-pill px-5 py-2"
+            routerLink="/userdashboard">
+
+            Back 
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

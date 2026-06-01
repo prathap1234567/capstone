@@ -1,0 +1,123 @@
+<div class="profile-page">
+
+  <div class="container py-5">
+
+    <div class="text-center mb-5">
+      <h2 class="fw-bold text-white">Profile Management</h2>
+      <p class="text-secondary">Manage your account, password and wallet</p>
+    </div>
+
+    @if (user) {
+      <div class="card profile-card shadow-lg border-0 rounded-4 mb-4">
+        <div class="card-body p-4">
+          <h4 class="text-white mb-4">Account Details</h4>
+
+          <div class="row g-3">
+
+            <div class="col-md-4">
+              <div class="info-box">
+                <p>Account Number</p>
+                <h6>{{user.account?.accountNumber}}</h6>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="info-box">
+                <p>Balance</p>
+                <h6>₹{{user.account?.balance}}</h6>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="info-box">
+                <p>Status</p>
+                <h6>{{user.account?.accountStatus}}</h6>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    }
+
+    <div class="row g-4">
+
+      <div class="col-lg-6">
+        <div class="card profile-card shadow-lg border-0 rounded-4 h-100">
+          <div class="card-body p-4">
+            <h4 class="text-white mb-4">Update Profile</h4>
+
+            <form [formGroup]="profileForm">
+
+              <input class="form-control mb-3" type="text" formControlName="fullName" placeholder="Full Name">
+
+              <input class="form-control mb-3" type="text" formControlName="phone" placeholder="Phone">
+
+              <input class="form-control mb-3" type="text" formControlName="userName" placeholder="Username">
+
+              <input class="form-control mb-4" type="email" formControlName="userEmail" placeholder="Email">
+
+              <div class="d-grid">
+                <button type="button" class="btn btn-primary" (click)="updateProfile()">
+                  Update Profile
+                </button>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+
+        <div class="card profile-card shadow-lg border-0 rounded-4 mb-4">
+          <div class="card-body p-4">
+            <h4 class="text-white mb-4">Change Password</h4>
+
+            <form [formGroup]="passwordForm">
+
+              <input class="form-control mb-3" type="password" formControlName="oldPassword" placeholder="Old Password">
+
+              <input class="form-control mb-4" type="password" formControlName="newPassword" placeholder="New Password">
+
+              <div class="d-grid">
+                <button type="button" class="btn btn-warning" (click)="changePassword()">
+                  Change Password
+                </button>
+              </div>
+
+            </form>
+          </div>
+        </div>
+
+        <div class="card profile-card shadow-lg border-0 rounded-4">
+          <div class="card-body p-4">
+            <h4 class="text-white mb-4">Load Money</h4>
+
+            <form [formGroup]="moneyForm">
+
+              <input class="form-control mb-4" type="number" formControlName="amount" placeholder="Enter Amount">
+
+              <div class="d-grid">
+                <button type="button" class="btn btn-success" (click)="loadMoney()">
+                  Add Money
+                </button>
+              </div>
+
+            </form>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    @if (message) {
+      <div class="alert alert-info text-center mt-4 rounded-4">
+        {{message}}
+      </div>
+    }
+
+  </div>
+
+</div>

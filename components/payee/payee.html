@@ -1,0 +1,171 @@
+<div class="payee-page">
+
+  <div class="container py-5">
+
+    <div class="row justify-content-center">
+
+      <div class="col-12 col-lg-10">
+
+        <!-- Header -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+
+          <div>
+            <h2 class="text-white fw-bold mb-1">Manage Payees</h2>
+            <p class="text-light mb-0">
+              Add and manage your trusted bank payees
+            </p>
+          </div>
+
+          <span class="badge bg-primary rounded-pill px-3 py-2">
+            Banking
+          </span>
+
+        </div>
+
+        <!-- Add Payee Card -->
+        <div class="card payee-card shadow-lg border-0 rounded-4 mb-4">
+
+          <div class="card-body p-4">
+
+            <h4 class="mb-3 text-white">Add Payee</h4>
+
+            <form [formGroup]="payeeForm">
+
+              <div class="row">
+
+                <div class="col-md-4 mb-3">
+                  <label class="form-label">Payee Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="payeeName"
+                    placeholder="Enter payee name">
+                </div>
+
+                <div class="col-md-4 mb-3">
+                  <label class="form-label">Account Number</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="payeeAccountNumber"
+                    placeholder="Enter account number">
+                </div>
+
+                <div class="col-md-4 mb-3">
+                  <label class="form-label">Bank Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="bankName"
+                    placeholder="Enter bank name">
+                </div>
+
+              </div>
+
+              <button
+                type="button"
+                class="btn btn-primary w-100"
+                (click)="addPayee()">
+                Add Payee
+              </button>
+
+            </form>
+
+            <div
+              *ngIf="message"
+              class="alert alert-info mt-3 mb-0 rounded-3">
+              {{message}}
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Saved Payees -->
+        <div class="card payee-card shadow-lg border-0 rounded-4">
+
+          <div class="card-body p-4">
+
+            <div class="d-flex justify-content-between align-items-center mb-3">
+
+              <h4 class="text-white mb-0">
+                Saved Payees
+              </h4>
+
+              <span class="badge bg-light text-dark rounded-pill">
+                Total: {{payees.length}}
+              </span>
+
+            </div>
+
+            <div class="table-responsive">
+
+              <table class="table table-dark table-hover align-middle mb-0">
+
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Account Number</th>
+                    <th>Bank</th>
+                    <th class="text-center">Action</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+
+                  <tr *ngFor="let payee of payees">
+
+                    <td>{{payee.payeeName}}</td>
+                    <td>{{payee.payeeAccountNumber}}</td>
+                    <td>{{payee.bankName}}</td>
+
+                    <td class="text-center">
+
+                      <button
+                        class="btn btn-outline-danger btn-sm rounded-pill px-3"
+                        (click)="deletePayee(payee.payeeId)">
+                        Delete
+                      </button>
+
+                    </td>
+
+                  </tr>
+
+                  <tr *ngIf="payees.length === 0">
+
+                    <td colspan="4" class="text-center text-secondary py-4">
+                      No payees added yet
+                    </td>
+
+                  </tr>
+
+                </tbody>
+
+              </table>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Back Button -->
+        <div class="text-center mt-4">
+
+          <button
+            class="btn btn-outline-light rounded-pill px-5 py-2"
+            routerLink="/userdashboard">
+
+              Back 
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

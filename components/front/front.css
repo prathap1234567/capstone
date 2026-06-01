@@ -1,0 +1,22 @@
+.home-page{
+    min-height:100vh;
+    background:
+    linear-gradient(
+        rgba(0,20,50,0.85),
+        rgba(0,0,0,0.9)
+    ),
+    url('https://images.unsplash.com/photo-1563986768609-322da13575f3');
+
+    background-size:cover;
+    background-position:center;
+}
+
+.home-card{
+    background:rgba(18,32,50,0.95);
+    backdrop-filter:blur(10px);
+}
+
+.btn{
+    border-radius:12px;
+    font-weight:600;
+}

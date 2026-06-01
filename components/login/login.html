@@ -1,0 +1,66 @@
+<div class="login-page">
+
+  <div class="container">
+
+    <div class="row justify-content-center align-items-center min-vh-100">
+
+      <div class="col-11 col-sm-8 col-md-6 col-lg-4">
+
+        <div class="card login-card shadow-lg border-0 rounded-4">
+
+          <div class="card-body p-5">
+
+            <div class="text-center mb-4">
+              <h2 class="fw-bold text-white">Welcome Back</h2>
+              <p class="text-secondary mb-0">
+                Login to your account
+              </p>
+            </div>
+
+            <form [formGroup]="loginForm">
+
+              <div class="form-floating mb-3">
+                <input
+                  type="email"
+                  class="form-control"
+                  formControlName="userEmail"
+                  placeholder="Email">
+                <label>Email Address</label>
+              </div>
+
+              <div class="form-floating mb-4">
+                <input
+                  type="password"
+                  class="form-control"
+                  formControlName="userPass"
+                  placeholder="Password">
+                <label>Password</label>
+              </div>
+
+              <div class="d-grid">
+                <button
+                  type="button"
+                  class="btn btn-primary btn-lg"
+                  (click)="doLogin()">
+                  Login
+                </button>
+              </div>
+
+              <div *ngIf="message"
+                   class="alert alert-info mt-3 text-center">
+                {{message}}
+              </div>
+
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
